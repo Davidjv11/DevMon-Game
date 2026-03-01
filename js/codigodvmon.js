@@ -1,9 +1,11 @@
 //Botones para elegir devmon
 let spanDevmonPlayer
-
+let spanDevmonPc
 
 function iniciarJuego( ){
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
+
+    spanDevmonPc = document.getElementById("DevmonPc")
 
     let botonSalmonoque = document.getElementById("botonSalmonoque")
     botonSalmonoque.addEventListener("click", seleccionarSalmonoque)
@@ -23,82 +25,81 @@ function iniciarJuego( ){
 
     let botonLeñon = document.getElementById("botonLeñon")
     botonLeñon.addEventListener("click", seleccionarLeñon)
-
- 
-
-    }
+ }
 //alerta por seleccionar un devmon
 
 
     function seleccionarSalmonoque() {
         alert("Selecionaste a Salmonoque")
         spanDevmonPlayer.innerHTML = "Salmonoque" 
+        seleccionarDevmonEnemigo()
     }
     function seleccionarDragonaitor() {
         alert("Selecionaste a Dragonaitor")
         spanDevmonPlayer.innerHTML ="Dragonaitor"
+        seleccionarDevmonEnemigo()
     }
     function seleccionarTortugor() {
         alert("Selecionaste a Tortugor")
         spanDevmonPlayer.innerHTML = "Tortugor" 
+        seleccionarDevmonEnemigo()
     }   
 
     function seleccionarTiburoncin() {
         alert("Selecionaste a Tiburoncin")
         spanDevmonPlayer.innerHTML = "Tiburoncin" 
+        seleccionarDevmonEnemigo()
     }
 
     function seleccionarPalmon() {
         alert("Selecionaste a Palmon")
-        spanDevmonPlayer.innerHTML = "Palmon" 
+        spanDevmonPlayer.innerHTML = "Palmon"
+        seleccionarDevmonEnemigo()
     }
 
     function seleccionarLeñon() {
         alert("Selecionaste a Leñon")
         spanDevmonPlayer.innerHTML = "Leñon" 
-    }   
+        seleccionarDevmonEnemigo()
+    }
 
    
 
 
 //PC elige devmon aleatoriamente
-let selectDevmonPc
 
-    spanDevmonPc = document.getElementById("DevmonPc")
+function seleccionarDevmonEnemigo(){
+    let seleccionRandom = random(1,6)
+ 
 
-
-function selectDevmonPc(){
-    let DevmonPc = ramdom(1,6)
-    let spanDevmonPc = document.getElementById("DevmonPc")
-
-    if (DevmonPc == 1 ){
+    if (seleccionRandom == 1 ){
         spanDevmonPc.innerHTML = "Salmonoque"
         // Salmonoque
 
-    } else if (DevmonPc == 2 ){
+    } else if (seleccionRandom == 2 ){
         spanDevmonPc.innerHTML = "Dragonaitor"
-        // Dragonaitor
+        // Dragonaitor 
 
-    } else if (DevmonPc == 3 ){
+    } else if (seleccionRandom == 3 ){
         spanDevmonPc.innerHTML = "Tortugor"
         // Tortugor
 
-    } else if (DevmonPc == 4 ){
+    } else if (seleccionRandom == 4 ){
         spanDevmonPc.innerHTML = "Tiburoncin"
         // Tiburoncin
 
-    } else if (DevmonPc == 5 ){
+    } else if (seleccionRandom == 5 ){
         spanDevmonPc.innerHTML = "Palmon"
         // Palmon
         
-    } else if (DevmonPc == 6 ){
+    } else if (seleccionRandom == 6 ){
         spanDevmonPc.innerHTML = "Leñon"
         // Leñon
         
     }
 }
 
-function ramdom(min, max) {
+function random(min, max) {
     return Math.floor(Math.random() * (max-min+1)+min)
 }
 
