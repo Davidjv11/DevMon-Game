@@ -76,15 +76,15 @@ function ataquePlanta() {
     seleccionarAtaquePC()
     alert("Tu ataque es " + ataquePlayer + " y el ataque del PC es " + ataquePc)   
 }
-//Funciones para elegir ataque PC
+//Funciones para elegir ataque PC y ciclo if para mostrar el ataque ramdom del PC
 function seleccionarAtaquePC() {
     let seleccionRandom = random(1,3)
-    if (seleccionRandom == 1 ){
-        ataquePc = "Fuego"
-    } else if (seleccionRandom == 2 ){
-        ataquePc = "Agua"
-    } else if (seleccionRandom == 3 ){  
-        ataquePc = "Planta"
+        if (seleccionRandom == 1 ){
+            ataquePc = "Fuego"
+        } else if (seleccionRandom == 2 ){
+            ataquePc = "Agua"
+        } else if (seleccionRandom == 3 ){  
+            ataquePc = "Planta"
     }
 
 }
