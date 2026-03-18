@@ -61,20 +61,20 @@ function ataqueFuego() {
     alert("Seleccionaste el ataque de Fuego")
     ataquePlayer = "Fuego"
     seleccionarAtaquePC()
-    alert("Tu ataque es " + ataquePlayer + " y el ataque del PC es " + ataquePc)
+    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
 }
 
 function ataqueAgua() {
     alert("Seleccionaste el ataque de Agua")
     ataquePlayer = "Agua"
     seleccionarAtaquePC()
-    alert("Tu ataque es " + ataquePlayer + " y el ataque del PC es " + ataquePc)
+    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
 }                 
 function ataquePlanta() {
     alert("Seleccionaste el ataque de Planta")
     ataquePlayer = "Planta"
     seleccionarAtaquePC()
-    alert("Tu ataque es " + ataquePlayer + " y el ataque del PC es " + ataquePc)   
+    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)   
 }
 //Funciones para elegir ataque PC y ciclo if para mostrar el ataque ramdom del PC
 function seleccionarAtaquePC() {
@@ -86,7 +86,33 @@ function seleccionarAtaquePC() {
         } else if (seleccionRandom == 3 ){  
             ataquePc = "Planta"
     }
+    crearmensaje()
+}
+//Funcion que muestra el resultado del combate
+function resultadoCombate() {
+    if (ataquePlayer == ataquePc) {
+        resultado = "Empate"    
+    } else if (ataquePlayer == "Fuego" && ataquePc == "Planta") {
+        resultado = "Ganaste"
+    }
+    else if (ataquePlayer == "Agua" && ataquePc == "Fuego") {
+        resultado = "Ganaste"
+    }
+    else if (ataquePlayer == "Planta" && ataquePc == "Agua") {
+        resultado = "Ganaste"
+    }
+    else {
+        resultado = "Perdiste"
+    }   
+}
+//Funcion para mostrar el resultado del combate en el HTML
+function  crearmensaje(resultado) {
+    let sectionMensajes = document.getElementById("mensajes")
 
+    let parrafo = document.createElement("p")
+    parrafo.innerHTML = "Tu devmon ataca con " + ataquePlayer + " y el ataque del  devmon enemigo es " + ataquePc + ". " + resultado
+
+    sectionMensajes.appendChild(parrafo)
 }
 
 //alerta por seleccionar un devmon
@@ -167,4 +193,4 @@ function random(min, max) {
 }
 
 //Iniciar el juego al cargar la pagina
-window.addEventListener("load",iniciarJuego)
+window.addEventListener("load",iniciarJuego) 
