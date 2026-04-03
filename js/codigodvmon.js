@@ -4,6 +4,7 @@ let ataquePlayer
 
 let spanDevmonPc
 let ataquePc
+let sectionMensajes
 
 //Funcion para iniciar el juego
 
@@ -54,6 +55,7 @@ function iniciarJuego( ){
     let botonAtaquePlantaPc = document.getElementById("boton-Planta")
     botonAtaquePlantaPc.addEventListener("click", ataquePlanta)
 
+    sectionMensajes = document.getElementById("mensajes")
 }
 
 //Funciones para elegir ataque Player
@@ -107,7 +109,8 @@ function resultadoCombate() {
 }
 //Funcion para mostrar el resultado del combate en el HTML
 function  crearmensaje(resultado) {
-    let sectionMensajes = document.getElementById("mensajes")
+    resultadoCombate()
+    
 
     let parrafo = document.createElement("p")
     parrafo.innerHTML = "Tu devmon ataca con " + ataquePlayer + " y el ataque del  devmon enemigo es " + ataquePc + ". " + resultado
