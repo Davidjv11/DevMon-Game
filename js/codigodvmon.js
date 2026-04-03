@@ -44,18 +44,6 @@ function iniciarJuego( ){
     let botonAtaquePlanta = document.getElementById("boton-Planta")
     botonAtaquePlanta.addEventListener("click", ataquePlanta)
 
-    // Botones para elegir ataque PC
-
-    let botonAtaqueFuegoPc = document.getElementById("boton-Fuego")
-    botonAtaqueFuegoPc.addEventListener("click", ataqueFuego)
-
-    let botonAtaqueAguaPc = document.getElementById("boton-Agua")
-    botonAtaqueAguaPc.addEventListener("click", ataqueAgua)
-
-    let botonAtaquePlantaPc = document.getElementById("boton-Planta")
-    botonAtaquePlantaPc.addEventListener("click", ataquePlanta)
-
-    sectionMensajes = document.getElementById("mensajes")
 }
 
 //Funciones para elegir ataque Player
@@ -92,6 +80,7 @@ function seleccionarAtaquePC() {
 }
 //Funcion que muestra el resultado del combate
 function resultadoCombate() {
+    let resultado
     if (ataquePlayer == ataquePc) {
         resultado = "Empate"    
     } else if (ataquePlayer == "Fuego" && ataquePc == "Planta") {
@@ -105,11 +94,13 @@ function resultadoCombate() {
     }
     else {
         resultado = "Perdiste"
+
+    return resultado
     }   
 }
 //Funcion para mostrar el resultado del combate en el HTML
-function  crearmensaje(resultado) {
-    resultadoCombate()
+function  crearmensaje() {
+   let resultado = resultadoCombate()
     
 
     let parrafo = document.createElement("p")
