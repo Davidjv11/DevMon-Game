@@ -15,6 +15,8 @@ function iniciarJuego( ){
 
     spanDevmonPc = document.getElementById("DevmonPc")
 
+    sectionMensajes = document.getElementById("mensajes")
+
     let botonSalmonoque = document.getElementById("botonSalmonoque")
     botonSalmonoque.addEventListener("click", seleccionarSalmonoque)
 
@@ -82,7 +84,9 @@ function seleccionarAtaquePC() {
 function resultadoCombate() {
     let resultado
     if (ataquePlayer == ataquePc) {
-        resultado = "Empate"    
+        resultado = "Empate" 
+        
+        return resultado   
     } else if (ataquePlayer == "Fuego" && ataquePc == "Planta") {
         resultado = "Ganaste"
     }
@@ -110,7 +114,6 @@ function  crearmensaje() {
 }
 
 //alerta por seleccionar un devmon
-
 
     function seleccionarSalmonoque() {
         alert("Selecionaste a Salmonoque")
