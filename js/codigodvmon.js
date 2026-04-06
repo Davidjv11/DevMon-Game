@@ -85,8 +85,7 @@ function resultadoCombate() {
     let resultado
     if (ataquePlayer == ataquePc) {
         resultado = "Empate" 
-        
-        return resultado   
+
     } else if (ataquePlayer == "Fuego" && ataquePc == "Planta") {
         resultado = "Ganaste"
     }
@@ -98,10 +97,12 @@ function resultadoCombate() {
     }
     else {
         resultado = "Perdiste"
+    }
 
     return resultado
+    
     }   
-}
+
 //Funcion para mostrar el resultado del combate en el HTML
 function  crearmensaje() {
    let resultado = resultadoCombate()
