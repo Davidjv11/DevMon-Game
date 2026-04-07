@@ -6,6 +6,8 @@ let spanDevmonPc
 let ataquePc
 let sectionMensajes
 
+let vidasPlayer = 3
+let vidasPc = 3
 //Funcion para iniciar el juego
 
 function iniciarJuego( ){
@@ -82,25 +84,54 @@ function seleccionarAtaquePC() {
 }
 //Funcion que muestra el resultado del combate
 function resultadoCombate() {
+
+    let spanVidasPlayer = document.getElementById("vidasPlayer")
+    let spanVidasPc = document.getElementById("vidasPc")
+
     let resultado
+
     if (ataquePlayer == ataquePc) {
         resultado = "Empate" 
+        revisarVidas()
 
     } else if (ataquePlayer == "Fuego" && ataquePc == "Planta") {
         resultado = "Ganaste"
+        vidasPc--
+        spanVidasPc.innerHTML = vidasPc
+       revisarVidas()
     }
     else if (ataquePlayer == "Agua" && ataquePc == "Fuego") {
         resultado = "Ganaste"
+        vidasPc--
+        spanVidasPc.innerHTML = vidasPc
+        revisarVidas()
     }
     else if (ataquePlayer == "Planta" && ataquePc == "Agua") {
         resultado = "Ganaste"
+        vidasPc--
+        spanVidasPc.innerHTML = vidasPc
+        revisarVidas()
     }
     else {
         resultado = "Perdiste"
+        vidasPlayer--
+        spanVidasPlayer.innerHTML = vidasPlayer 
+        revisarVidas()
+        
     }
+        
+    
+
+   
 
     return resultado
-    
+    }
+     function revisarVidas() {
+        if (vidasPlayer <= 0) {
+            alert("Lo siento, perdiste el combate")
+        } else if (vidasPc <= 0) {
+            alert("Felicidades, ganaste el combate")
+        }
     }   
 
 //Funcion para mostrar el resultado del combate en el HTML
