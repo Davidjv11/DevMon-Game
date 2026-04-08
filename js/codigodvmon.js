@@ -8,9 +8,17 @@ let sectionMensajes
 
 let vidasPlayer = 3
 let vidasPc = 3
+
+let resultadoActual
+
 //Funcion para iniciar el juego
 
 function iniciarJuego( ){
+
+    function seleccionarDevmon(nombreDevmon) {
+        spanDevmonPlayer.innerHTML = nombreDevmon
+        seleccionarDevmonPC()
+    }
 
     //Botones para elegir devmon
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
@@ -20,59 +28,46 @@ function iniciarJuego( ){
     sectionMensajes = document.getElementById("mensajes")
 
     let botonSalmonoque = document.getElementById("botonSalmonoque")
-    botonSalmonoque.addEventListener("click", seleccionarSalmonoque)
+    botonSalmonoque.addEventListener("click", () => seleccionarDevmon("Salmonoque"))
 
     let botonDragonaitor = document.getElementById("botonDragonaitor")
-    botonDragonaitor.addEventListener("click", seleccionarDragonaitor)
+    botonDragonaitor.addEventListener("click", () => seleccionarDevmon("Dragonaitor")   )
 
 
     let botonTortugor = document.getElementById("botonTortugor")
-    botonTortugor.addEventListener("click", seleccionarTortugor)
+    botonTortugor.addEventListener("click", () => seleccionarDevmon("Tortugor"))
 
     let botonTiburoncin = document.getElementById("botonTiburoncin")
-    botonTiburoncin.addEventListener("click", seleccionarTiburoncin)
+    botonTiburoncin.addEventListener("click", () => seleccionarDevmon("Tiburoncin"))
 
     let botonPalmon = document.getElementById("botonPalmon")
-    botonPalmon.addEventListener("click", seleccionarPalmon)
+    botonPalmon.addEventListener("click", () => seleccionarDevmon("Palmon"))
 
     let botonLeñon = document.getElementById("botonLeñon")
-    botonLeñon.addEventListener("click", seleccionarLeñon)
+    botonLeñon.addEventListener("click", () => seleccionarDevmon("Leñon"))
 
     // Botones para elegir ataque jugador
     let botonAtaqueFuego = document.getElementById("boton-Fuego")
-    botonAtaqueFuego.addEventListener("click", ataqueFuego)
+    botonAtaqueFuego.addEventListener("click", () => seleccionarAtaque("Fuego")
+    )
 
     let botonAtaqueAgua = document.getElementById("boton-Agua")
-    botonAtaqueAgua.addEventListener("click", ataqueAgua)
+    botonAtaqueAgua.addEventListener("click", () => seleccionarAtaque("Agua")
+    )
 
     let botonAtaquePlanta = document.getElementById("boton-Planta")
-    botonAtaquePlanta.addEventListener("click", ataquePlanta)
+    botonAtaquePlanta.addEventListener("click", () => seleccionarAtaque("Planta"))
 
 }
 
 //Funciones para elegir ataque Player
-function ataqueFuego() {
-    alert("Seleccionaste el ataque de Fuego")
-    ataquePlayer = "Fuego"
+function seleccionarAtaque(tipoAtaque) {
+    ataquePlayer = tipoAtaque
     seleccionarAtaquePC()
-    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
+    crearmensaje()
     revisarVidas()
 }
 
-function ataqueAgua() {
-    alert("Seleccionaste el ataque de Agua")
-    ataquePlayer = "Agua"
-    seleccionarAtaquePC()
-    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
-    revisarVidas()
-}                 
-function ataquePlanta() {
-    alert("Seleccionaste el ataque de Planta")
-    ataquePlayer = "Planta"
-    seleccionarAtaquePC()
-    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
-    revisarVidas()
-}
 //Funciones para elegir ataque PC y ciclo if para mostrar el ataque ramdom del PC
 function seleccionarAtaquePC() {
     let seleccionRandom = random(1,3)
@@ -83,7 +78,7 @@ function seleccionarAtaquePC() {
         } else if (seleccionRandom == 3 ){  
             ataquePc = "Planta"
     }
-    resultadoCombate()
+    resultadoActual = resultadoCombate()
 
 }
 //Funcion que muestra el resultado del combate
@@ -128,8 +123,8 @@ function resultadoCombate() {
     }
      function revisarVidas() {
         if (vidasPlayer <= 0) {
-            alert("Lo siento, perdiste el combate")
-            mensajeFinal("Lo siento, perdiste el combate")
+            alert("Perdiste el combate")
+            mensajeFinal("Perdiste el combate")
         } else if (vidasPc <= 0) {
             alert("Felicidades, ganaste el combate")
             mensajeFinal("Felicidades, ganaste el combate")
@@ -138,10 +133,9 @@ function resultadoCombate() {
 
 //Funcion para mostrar el resultado del combate en el HTML
 function  crearmensaje() {
-   let resultado = resultadoCombate()
-    
+   let resultado = resultadoActual
+   let parrafo = document.createElement("p")
 
-    let parrafo = document.createElement("p")
     parrafo.innerHTML = "Tu devmon ataca con " + ataquePlayer + " y el ataque del  devmon enemigo es " + ataquePc + ". " + resultado
 
     sectionMensajes.appendChild(parrafo)
@@ -161,35 +155,29 @@ function mensajeFinal(resultadoFinal) {
 //alerta por seleccionar un devmon
 
     function seleccionarSalmonoque() {
-        alert("Selecionaste a Salmonoque")
         spanDevmonPlayer.innerHTML = "Salmonoque" 
         seleccionarDevmonPC()
     }
     function seleccionarDragonaitor() {
-        alert("Selecionaste a Dragonaitor")
         spanDevmonPlayer.innerHTML ="Dragonaitor"
         seleccionarDevmonPC()
     }
     function seleccionarTortugor() {
-        alert("Selecionaste a Tortugor")
         spanDevmonPlayer.innerHTML = "Tortugor" 
         seleccionarDevmonPC()
     }   
 
     function seleccionarTiburoncin() {
-        alert("Selecionaste a Tiburoncin")
         spanDevmonPlayer.innerHTML = "Tiburoncin" 
         seleccionarDevmonPC()
     }
 
     function seleccionarPalmon() {
-        alert("Selecionaste a Palmon")
         spanDevmonPlayer.innerHTML = "Palmon"
         seleccionarDevmonPC()
     }
 
     function seleccionarLeñon() {
-        alert("Selecionaste a Leñon")
         spanDevmonPlayer.innerHTML = "Leñon" 
         seleccionarDevmonPC()
     }
