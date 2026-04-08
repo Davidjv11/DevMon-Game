@@ -27,6 +27,7 @@ function iniciarJuego( ){
 
     sectionMensajes = document.getElementById("mensajes")
 
+    // Botones para elegir devmon jugador
     let botonSalmonoque = document.getElementById("botonSalmonoque")
     botonSalmonoque.addEventListener("click", () => seleccionarDevmon("Salmonoque"))
 
@@ -58,6 +59,9 @@ function iniciarJuego( ){
     let botonAtaquePlanta = document.getElementById("boton-Planta")
     botonAtaquePlanta.addEventListener("click", () => seleccionarAtaque("Planta"))
 
+    // Boton para reiniciar el juego
+    let botonReiniciar = document.getElementById("boton-reiniciar")
+    botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
 //Funciones para elegir ataque Player
@@ -114,13 +118,12 @@ function resultadoCombate() {
     else {
         resultado = "Perdiste"
         vidasPlayer--
-        spanVidasPlayer.innerHTML = vidasPlayer 
-      
-        
+        spanVidasPlayer.innerHTML = vidasPlayer   
     }
-        
     return resultado
     }
+
+    //Funcion para revisar las vidas de ambos jugadores y mostrar el resultado final del combate
      function revisarVidas() {
         if (vidasPlayer <= 0) {
             alert("Perdiste el combate")
@@ -217,6 +220,11 @@ function seleccionarDevmonPC(){
         
     }
 }
+// Funcion para reiniciar el juego
+function reiniciarJuego() {
+    location.reload()
+}
+
 //Funcion para generar un numero aleatorio entre un rango
 function random(min, max) {
     return Math.floor(Math.random() * (max-min+1)+min)
