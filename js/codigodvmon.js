@@ -56,6 +56,7 @@ function ataqueFuego() {
     ataquePlayer = "Fuego"
     seleccionarAtaquePC()
     alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
+    revisarVidas()
 }
 
 function ataqueAgua() {
@@ -63,12 +64,14 @@ function ataqueAgua() {
     ataquePlayer = "Agua"
     seleccionarAtaquePC()
     alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
+    revisarVidas()
 }                 
 function ataquePlanta() {
     alert("Seleccionaste el ataque de Planta")
     ataquePlayer = "Planta"
     seleccionarAtaquePC()
-    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)   
+    alert("Tu " + spanDevmonPlayer.innerHTML + " ataco con " + ataquePlayer + " y el ataque del " + spanDevmonPc.innerHTML + " enemigo es " + ataquePc)
+    revisarVidas()
 }
 //Funciones para elegir ataque PC y ciclo if para mostrar el ataque ramdom del PC
 function seleccionarAtaquePC() {
@@ -80,7 +83,8 @@ function seleccionarAtaquePC() {
         } else if (seleccionRandom == 3 ){  
             ataquePc = "Planta"
     }
-    crearmensaje()
+    resultadoCombate()
+
 }
 //Funcion que muestra el resultado del combate
 function resultadoCombate() {
@@ -92,45 +96,43 @@ function resultadoCombate() {
 
     if (ataquePlayer == ataquePc) {
         resultado = "Empate" 
-        revisarVidas()
+      
 
     } else if (ataquePlayer == "Fuego" && ataquePc == "Planta") {
         resultado = "Ganaste"
         vidasPc--
         spanVidasPc.innerHTML = vidasPc
-       revisarVidas()
+       
     }
     else if (ataquePlayer == "Agua" && ataquePc == "Fuego") {
         resultado = "Ganaste"
         vidasPc--
         spanVidasPc.innerHTML = vidasPc
-        revisarVidas()
+    
     }
     else if (ataquePlayer == "Planta" && ataquePc == "Agua") {
         resultado = "Ganaste"
         vidasPc--
         spanVidasPc.innerHTML = vidasPc
-        revisarVidas()
+        
     }
     else {
         resultado = "Perdiste"
         vidasPlayer--
         spanVidasPlayer.innerHTML = vidasPlayer 
-        revisarVidas()
+      
         
     }
         
-    
-
-   
-
     return resultado
     }
      function revisarVidas() {
         if (vidasPlayer <= 0) {
             alert("Lo siento, perdiste el combate")
+            mensajeFinal("Lo siento, perdiste el combate")
         } else if (vidasPc <= 0) {
             alert("Felicidades, ganaste el combate")
+            mensajeFinal("Felicidades, ganaste el combate")
         }
     }   
 
@@ -144,6 +146,17 @@ function  crearmensaje() {
 
     sectionMensajes.appendChild(parrafo)
 }
+
+//Funcion para mostrar el resultado final del combate en el HTML
+function mensajeFinal(resultadoFinal) {
+    let sectionMensajes = document.getElementById("mensajes")
+  
+    let parrafo = document.createElement("p")
+    parrafo.innerHTML = resultadoFinal
+
+    sectionMensajes.appendChild(parrafo)
+}
+
 
 //alerta por seleccionar un devmon
 
