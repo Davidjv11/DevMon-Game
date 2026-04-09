@@ -15,11 +15,6 @@ let resultadoActual
 
 function iniciarJuego( ){
 
-    function seleccionarDevmon(nombreDevmon) {
-        spanDevmonPlayer.innerHTML = nombreDevmon
-        seleccionarDevmonPC()
-    }
-
     //Botones para elegir devmon
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
 
@@ -60,9 +55,14 @@ function iniciarJuego( ){
     botonAtaquePlanta.addEventListener("click", () => seleccionarAtaque("Planta"))
 
     // Boton para reiniciar el juego
-    let botonReiniciar = document.getElementById("boton-reiniciar")
+    let botonReiniciar = document.getElementById("botonReiniciar")
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
+//Funcion para mostrar el devmon elegido por el jugador y llamar a la funcion para que el PC elija un devmon enemigo
+  function seleccionarDevmon(nombreDevmon) {
+        spanDevmonPlayer.innerHTML = nombreDevmon
+        seleccionarDevmonPC()
+    }
 
 //Funciones para elegir ataque Player
 function seleccionarAtaque(tipoAtaque) {
@@ -126,10 +126,8 @@ function resultadoCombate() {
     //Funcion para revisar las vidas de ambos jugadores y mostrar el resultado final del combate
      function revisarVidas() {
         if (vidasPlayer <= 0) {
-            alert("Perdiste el combate")
             mensajeFinal("Perdiste el combate")
         } else if (vidasPc <= 0) {
-            alert("Felicidades, ganaste el combate")
             mensajeFinal("Felicidades, ganaste el combate")
         }
     }   
@@ -152,41 +150,19 @@ function mensajeFinal(resultadoFinal) {
     parrafo.innerHTML = resultadoFinal
 
     sectionMensajes.appendChild(parrafo)
+
+          let botonAtaqueFuego = document.getElementById("boton-Fuego")
+    botonAtaqueFuego.addEventListener("click", () => seleccionarAtaque("Fuego"))
+    botonAtaqueFuego.disabled = true
+
+    let botonAtaqueAgua = document.getElementById("boton-Agua")
+    botonAtaqueAgua.addEventListener("click", () => seleccionarAtaque("Agua"))
+    botonAtaqueAgua.disabled = true
+
+    let botonAtaquePlanta = document.getElementById("boton-Planta")
+    botonAtaquePlanta.addEventListener("click", () => seleccionarAtaque("Planta"))
+    botonAtaquePlanta.disabled = true
 }
-
-
-//alerta por seleccionar un devmon
-
-    function seleccionarSalmonoque() {
-        spanDevmonPlayer.innerHTML = "Salmonoque" 
-        seleccionarDevmonPC()
-    }
-    function seleccionarDragonaitor() {
-        spanDevmonPlayer.innerHTML ="Dragonaitor"
-        seleccionarDevmonPC()
-    }
-    function seleccionarTortugor() {
-        spanDevmonPlayer.innerHTML = "Tortugor" 
-        seleccionarDevmonPC()
-    }   
-
-    function seleccionarTiburoncin() {
-        spanDevmonPlayer.innerHTML = "Tiburoncin" 
-        seleccionarDevmonPC()
-    }
-
-    function seleccionarPalmon() {
-        spanDevmonPlayer.innerHTML = "Palmon"
-        seleccionarDevmonPC()
-    }
-
-    function seleccionarLeñon() {
-        spanDevmonPlayer.innerHTML = "Leñon" 
-        seleccionarDevmonPC()
-    }
-
-   
-
 
 //Funcion para que el PC seleccione un devmon enemigo de forma aleatoria
 
