@@ -15,6 +15,8 @@ let resultadoActual
 
 function iniciarJuego( ){
 
+    let seleccionarAtaque = document.getElementById("seleccionarAtaque")
+        seleccionarAtaque.style.display = "none"
 
     //Botones para elegir devmon
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
@@ -22,6 +24,9 @@ function iniciarJuego( ){
     spanDevmonPc = document.getElementById("DevmonPc")
 
     sectionMensajes = document.getElementById("mensajes")
+
+
+   
 
     // Botones para elegir devmon jugador
     let botonSalmonoque = document.getElementById("botonSalmonoque")
@@ -60,14 +65,18 @@ function iniciarJuego( ){
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 //Funcion para mostrar el devmon elegido por el jugador y llamar a la funcion para que el PC elija un devmon enemigo
-  function seleccionarDevmon(nombreDevmon) {
+  function seleccionarDevmonPlayer(nombreDevmon) {
+
+ let seleccionarAtaque = document.getElementById("seleccionarAtaque")
+        seleccionarAtaque.style.display = "block"
+
         spanDevmonPlayer.innerHTML = nombreDevmon
         seleccionarDevmonPC()
 
-        let seleccionarAtaque = document.getElementById("seleccionar-ataque")
-        seleccionarAtaque.style.display = "block"
-    }
-
+    
+        // Mostrar la sección de ataques después de seleccionar el devmon
+       
+  }
 //Funciones para elegir ataque Player
 function seleccionarAtaque(tipoAtaque) {
     ataquePlayer = tipoAtaque
