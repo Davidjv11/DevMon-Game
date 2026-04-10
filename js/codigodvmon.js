@@ -15,6 +15,7 @@ let resultadoActual
 
 function iniciarJuego( ){
 
+
     //Botones para elegir devmon
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
 
@@ -62,6 +63,9 @@ function iniciarJuego( ){
   function seleccionarDevmon(nombreDevmon) {
         spanDevmonPlayer.innerHTML = nombreDevmon
         seleccionarDevmonPC()
+
+        let seleccionarAtaque = document.getElementById("seleccionar-ataque")
+        seleccionarAtaque.style.display = "block"
     }
 
 //Funciones para elegir ataque Player
