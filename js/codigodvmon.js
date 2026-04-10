@@ -14,10 +14,6 @@ let resultadoActual
 //Funcion para iniciar el juego
 
 function iniciarJuego( ){
-
-    let seleccionarAtaque = document.getElementById("seleccionarAtaque")
-        seleccionarAtaque.style.display = "none"
-
     //Botones para elegir devmon
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
 
@@ -25,28 +21,28 @@ function iniciarJuego( ){
 
     sectionMensajes = document.getElementById("mensajes")
 
-
+        let seleccionarAtaque = document.getElementById("seleccionarAtaque")
+        seleccionarAtaque.style.display = "none"
    
 
     // Botones para elegir devmon jugador
     let botonSalmonoque = document.getElementById("botonSalmonoque")
-    botonSalmonoque.addEventListener("click", () => seleccionarDevmon("Salmonoque"))
+    botonSalmonoque.addEventListener("click", () => seleccionarDevmonPlayer("Salmonoque"))
 
     let botonDragonaitor = document.getElementById("botonDragonaitor")
-    botonDragonaitor.addEventListener("click", () => seleccionarDevmon("Dragonaitor")   )
-
+    botonDragonaitor.addEventListener("click", () => seleccionarDevmonPlayer("Dragonaitor"))    
 
     let botonTortugor = document.getElementById("botonTortugor")
-    botonTortugor.addEventListener("click", () => seleccionarDevmon("Tortugor"))
+    botonTortugor.addEventListener("click", () => seleccionarDevmonPlayer("Tortugor"))
 
     let botonTiburoncin = document.getElementById("botonTiburoncin")
-    botonTiburoncin.addEventListener("click", () => seleccionarDevmon("Tiburoncin"))
+    botonTiburoncin.addEventListener("click", () => seleccionarDevmonPlayer("Tiburoncin"))
 
     let botonPalmon = document.getElementById("botonPalmon")
-    botonPalmon.addEventListener("click", () => seleccionarDevmon("Palmon"))
+    botonPalmon.addEventListener("click", () => seleccionarDevmonPlayer("Palmon"))
 
     let botonLeñon = document.getElementById("botonLeñon")
-    botonLeñon.addEventListener("click", () => seleccionarDevmon("Leñon"))
+    botonLeñon.addEventListener("click", () => seleccionarDevmonPlayer("Leñon"))
 
     // Botones para elegir ataque jugador
     let botonAtaqueFuego = document.getElementById("boton-Fuego")
@@ -66,12 +62,11 @@ function iniciarJuego( ){
 }
 //Funcion para mostrar el devmon elegido por el jugador y llamar a la funcion para que el PC elija un devmon enemigo
   function seleccionarDevmonPlayer(nombreDevmon) {
-
- let seleccionarAtaque = document.getElementById("seleccionarAtaque")
-        seleccionarAtaque.style.display = "block"
-
         spanDevmonPlayer.innerHTML = nombreDevmon
         seleccionarDevmonPC()
+
+        let seleccionarAtaque = document.getElementById("seleccionarAtaque")
+        seleccionarAtaque.style.display = "block"
 
     
         // Mostrar la sección de ataques después de seleccionar el devmon
