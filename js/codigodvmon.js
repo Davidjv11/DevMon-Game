@@ -11,7 +11,7 @@ let vidasPc = 3
 
 let resultadoActual
 
-//Funcion para iniciar el juego
+//Funcion para iniciar el juego //////////////////////////////////////////////////////////////////////
 
 function iniciarJuego( ){
     //Botones para elegir devmon
@@ -21,8 +21,8 @@ function iniciarJuego( ){
 
     sectionMensajes = document.getElementById("mensajes")
 
-        let seleccionarAtaque = document.getElementById("seleccionarAtaque")
-        seleccionarAtaque.style.display = "none"
+        let SeleccionDeAtaquePlayer = document.getElementById("seleccionarAtaque")
+        SeleccionDeAtaquePlayer.style.display = "none"
    
 
     // Botones para elegir devmon jugador
@@ -46,34 +46,41 @@ function iniciarJuego( ){
 
     // Botones para elegir ataque jugador
     let botonAtaqueFuego = document.getElementById("boton-Fuego")
-    botonAtaqueFuego.addEventListener("click", () => seleccionarAtaque("Fuego")
+    botonAtaqueFuego.addEventListener("click", () => seleccionarAtaquePlayer("Fuego")
     )
 
     let botonAtaqueAgua = document.getElementById("boton-Agua")
-    botonAtaqueAgua.addEventListener("click", () => seleccionarAtaque("Agua")
+    botonAtaqueAgua.addEventListener("click", () => seleccionarAtaquePlayer("Agua")
     )
 
     let botonAtaquePlanta = document.getElementById("boton-Planta")
-    botonAtaquePlanta.addEventListener("click", () => seleccionarAtaque("Planta"))
+    botonAtaquePlanta.addEventListener("click", () => seleccionarAtaquePlayer("Planta"))
+
+    
 
     // Boton para reiniciar el juego
     let botonReiniciar = document.getElementById("botonReiniciar")
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //Funcion para mostrar el devmon elegido por el jugador y llamar a la funcion para que el PC elija un devmon enemigo
   function seleccionarDevmonPlayer(nombreDevmon) {
         spanDevmonPlayer.innerHTML = nombreDevmon
         seleccionarDevmonPC()
 
-        let seleccionarAtaque = document.getElementById("seleccionarAtaque")
-        seleccionarAtaque.style.display = "block"
+            let SeleccionDeDevmon = document.getElementById("seleccionarDevmon")
+        SeleccionDeDevmon.style.display = "none"
+
+        let SeleccionDeAtaquePlayer = document.getElementById("seleccionarAtaque")
+        SeleccionDeAtaquePlayer.style.display = "block"
 
     
-        // Mostrar la sección de ataques después de seleccionar el devmon
+       
        
   }
 //Funciones para elegir ataque Player
-function seleccionarAtaque(tipoAtaque) {
+function seleccionarAtaquePlayer(tipoAtaque) {
     ataquePlayer = tipoAtaque
     seleccionarAtaquePC()
     crearmensaje()
@@ -160,15 +167,15 @@ function mensajeFinal(resultadoFinal) {
     sectionMensajes.appendChild(parrafo)
 
           let botonAtaqueFuego = document.getElementById("boton-Fuego")
-    botonAtaqueFuego.addEventListener("click", () => seleccionarAtaque("Fuego"))
+    botonAtaqueFuego.addEventListener("click", () => seleccionarAtaquePlayer("Fuego"))
     botonAtaqueFuego.disabled = true
 
     let botonAtaqueAgua = document.getElementById("boton-Agua")
-    botonAtaqueAgua.addEventListener("click", () => seleccionarAtaque("Agua"))
+    botonAtaqueAgua.addEventListener("click", () => seleccionarAtaquePlayer("Agua"))
     botonAtaqueAgua.disabled = true
 
     let botonAtaquePlanta = document.getElementById("boton-Planta")
-    botonAtaquePlanta.addEventListener("click", () => seleccionarAtaque("Planta"))
+    botonAtaquePlanta.addEventListener("click", () => seleccionarAtaquePlayer("Planta"))
     botonAtaquePlanta.disabled = true
 }
 
