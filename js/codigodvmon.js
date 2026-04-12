@@ -24,7 +24,9 @@ function iniciarJuego( ){
         let SeleccionDeAtaquePlayer = document.getElementById("seleccionarAtaque")
         SeleccionDeAtaquePlayer.style.display = "none"
    
-
+        let seccionReiniciar = document.getElementById("Reiniciar")
+        seccionReiniciar.style.display = "none"
+    
     // Botones para elegir devmon jugador
     let botonSalmonoque = document.getElementById("botonSalmonoque")
     botonSalmonoque.addEventListener("click", () => seleccionarDevmonPlayer("Salmonoque"))
@@ -56,11 +58,6 @@ function iniciarJuego( ){
     let botonAtaquePlanta = document.getElementById("boton-Planta")
     botonAtaquePlanta.addEventListener("click", () => seleccionarAtaquePlayer("Planta"))
 
-    
-
-    // Boton para reiniciar el juego
-    let botonReiniciar = document.getElementById("botonReiniciar")
-    botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -177,6 +174,11 @@ function mensajeFinal(resultadoFinal) {
     let botonAtaquePlanta = document.getElementById("boton-Planta")
     botonAtaquePlanta.addEventListener("click", () => seleccionarAtaquePlayer("Planta"))
     botonAtaquePlanta.disabled = true
+
+   
+     let seccionReiniciar = document.getElementById("Reiniciar") 
+    seccionReiniciar.style.display = "block"
+    
 }
 
 //Funcion para que el PC seleccione un devmon enemigo de forma aleatoria
