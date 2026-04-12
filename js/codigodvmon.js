@@ -16,14 +16,16 @@ let resultadoActual
 function iniciarJuego( ){
     //Botones para elegir devmon
     spanDevmonPlayer = document.getElementById("DevmonPlayer")
-
     spanDevmonPc = document.getElementById("DevmonPc")
 
+    // Seccion para mostrar los mensajes del combate
     sectionMensajes = document.getElementById("mensajes")
 
+    //Ocultar secciones de ataque y reiniciar al iniciar el juego
         let SeleccionDeAtaquePlayer = document.getElementById("seleccionarAtaque")
         SeleccionDeAtaquePlayer.style.display = "none"
-   
+
+    //Ocultar seccion de reiniciar al iniciar el juego
         let seccionReiniciar = document.getElementById("Reiniciar")
         seccionReiniciar.style.display = "none"
     
@@ -57,6 +59,10 @@ function iniciarJuego( ){
 
     let botonAtaquePlanta = document.getElementById("boton-Planta")
     botonAtaquePlanta.addEventListener("click", () => seleccionarAtaquePlayer("Planta"))
+
+    // Boton para reiniciar el juego
+    let botonReiniciar = document.getElementById("botonReiniciar")
+    botonReiniciar.addEventListener("click", reiniciarJuego)
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,11 +106,13 @@ function seleccionarAtaquePC() {
 //Funcion que muestra el resultado del combate
 function resultadoCombate() {
 
+    // Variables para mostrar las vidas restantes de ambos jugadores en el HTML
     let spanVidasPlayer = document.getElementById("vidasPlayer")
     let spanVidasPc = document.getElementById("vidasPc")
 
     let resultado
 
+    // Ciclo if para mostrar el resultado del combate dependiendo del ataque elegido por el jugador y el ataque elegido por el PC
     if (ataquePlayer == ataquePc) {
         resultado = "Empate" 
       
@@ -163,7 +171,8 @@ function mensajeFinal(resultadoFinal) {
 
     sectionMensajes.appendChild(parrafo)
 
-          let botonAtaqueFuego = document.getElementById("boton-Fuego")
+   // Deshabilitar botones de ataque al finalizar el combate
+    let botonAtaqueFuego = document.getElementById("boton-Fuego")
     botonAtaqueFuego.addEventListener("click", () => seleccionarAtaquePlayer("Fuego"))
     botonAtaqueFuego.disabled = true
 
@@ -176,6 +185,7 @@ function mensajeFinal(resultadoFinal) {
     botonAtaquePlanta.disabled = true
 
    
+    // Mostrar seccion de reiniciar al finalizar el combate
      let seccionReiniciar = document.getElementById("Reiniciar") 
     seccionReiniciar.style.display = "block"
     
